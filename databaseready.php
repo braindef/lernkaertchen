@@ -1,4 +1,7 @@
 <?php
+phpinfo();
+$db_handle = new DBController();
+
 class DBController {
 	//private $host = "danielan.mysql.db.internal";
 	private $host = "localhost";
@@ -9,18 +12,20 @@ class DBController {
 
 
 
-// Create connection
-function __construct() {
-    $this->conn = $this->connectDB();
-    if (!$this->conn) {
-        die("Connection failed: " . mysqli_connect_error());
+    // Create connection
+    function __construct() {
+        $this->conn = $this->connectDB();
+        if($this->conn==false) {
+            die("<font color=red>Database Connection Error</font>" . mysqli_connect_error());
+        }
     }
+
+    function connectDB() {
+            $conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
 }
 
-function connectDB() {
-		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
+    //mysqli_close($conn);
 }
-
 
 ?>
 
