@@ -1,30 +1,26 @@
 <?php
+class DBController {
+	//private $host = "danielan.mysql.db.internal";
+	private $host = "localhost";
+	private $user = "root";
+	private $password = "";  //bitte das produktive Passwort nicht öffentlich auf dem Github Server speichern.
+	private $database = "test";
+	private $conn;
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+function __construct() {
+    $this->conn = $this->connectDB();
+    if (!$this->conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
 }
 
-// Create database
-$sql = "CREATE DATABASE IF NOT EXISTS db_learnsoft;";
-if (mysqli_query($conn, $sql)) {
-    echo "Database created successfully";
-} else {
-    echo "Error creating database: " . mysqli_error($conn);
+function connectDB() {
+		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
 }
 
 
-// diese zeile kommt ins logout.php --> check variabeln
-mysqli_close($conn);
-
-// servername hostpoint: danielan.mysql.db.internal
 ?>
-
-
 
