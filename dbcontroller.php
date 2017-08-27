@@ -17,9 +17,9 @@ if ($_GET["test"]==1)
 class DBController {
 	//private $host = "marcland.mysql.db.internal";
 	private $host = "localhost"; 
-	private $user = "marcland_telli";
-	private $password = "qayxswedc$";  //bitte das produktive Passwort nicht öffentlich auf dem Github Server speichern.
-	private $database = "marcland_telli";
+	private $user = "root";
+	private $password = "";  //bitte das produktive Passwort nicht öffentlich auf dem Github Server speichern.
+	private $database = "lernkarten";
 	private $conn;
 	private $db;
 	
@@ -110,13 +110,13 @@ class DBController {
 	}
 
 
-	//added:
+	//added: not working on windows xampp
         function installDatabase() {
 
 		# MySQL with PDO_MYSQL  
 		$db = new PDO("mysql:host=$this->host;dbname=$this->database", $this->user, $this->password);
 
-		$query = file_get_contents("termine.sql");
+		$query = file_get_contents("./lernkarten.sql");
 
 		$stmt = $db->prepare($query);
 
