@@ -68,6 +68,25 @@ class DBController {
 
 	}
 
+    	function executeInsert($query) {
+		try {
+
+			// Prepare statement
+    			$stmt = $this->db->prepare($query);
+
+			// execute the query
+			$stmt->execute();
+
+			// echo a message to say the UPDATE succeeded
+			echo $stmt->rowCount() . " records INSERTED successfully";
+		}
+		catch(PDOException $e)
+		{
+		echo $query . "<br>" . $e->getMessage();
+    		}
+
+	}
+
 	//added:
 	function query($query) {
 		try {
