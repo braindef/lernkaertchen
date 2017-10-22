@@ -1,8 +1,8 @@
 FLUSH PRIVILEGES;
-CREATE USER 'lernkarten'@'localhost' IDENTIFIED BY '';
+CREATE USER IF NOT EXISTS 'lernkarten'@'localhost' IDENTIFIED BY '';
 GRANT ALL PRIVILEGES ON *.* TO 'lernkarten'@'localhost' WITH GRANT OPTION;
 
-CREATE DATABASE lernkarten;
+CREATE DATABASE IF NOT EXISTS lernkarten;
 
 use lernkarten;
 
