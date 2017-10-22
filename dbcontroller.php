@@ -136,6 +136,7 @@ class DBController {
 		$db = new PDO("mysql:host=$this->host;dbname=$this->database", $this->user, $this->password);
 
 		$query = file_get_contents("./lernkarten.sql");
+        print_r($query);
 
 		$stmt = $db->prepare($query);
 

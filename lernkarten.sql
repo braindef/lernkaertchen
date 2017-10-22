@@ -1,3 +1,4 @@
+FLUSH PRIVILEGES;
 CREATE USER 'lernkarten'@'localhost' IDENTIFIED BY '';
 GRANT ALL PRIVILEGES ON *.* TO 'lernkarten'@'localhost' WITH GRANT OPTION;
 

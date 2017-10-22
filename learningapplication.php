@@ -6,7 +6,7 @@ if (isset($_SESSION["login"])
     && $_SESSION["login"] == "ok") {
 
 // create database if not exists
-include "databaseready.php";
+include "dbcontroller.php";
 // next step
 
 ?>

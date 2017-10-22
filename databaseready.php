@@ -1,5 +1,5 @@
 <?php
-phpinfo();
+
 $db_handle = new DBController();
 
 class DBController {
@@ -7,7 +7,7 @@ class DBController {
 	private $host = "localhost";
 	private $user = "root";
 	private $password = "";  //bitte das produktive Passwort nicht öffentlich auf dem Github Server speichern.
-	private $database = "test";
+	private $database = "lernkarten";
 	private $conn;
 
 
