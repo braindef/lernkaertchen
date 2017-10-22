@@ -129,7 +129,7 @@ class DBController {
 	}
 
 
-	//added: not working on windows xampp
+	//added: needs a flush privileges statement as first in sql script
         function installDatabase() {
 
 		# MySQL with PDO_MYSQL  
