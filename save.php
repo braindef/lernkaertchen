@@ -26,7 +26,7 @@ function test_input($data) {
 
 $query="INSERT INTO lernkarten (question, answer) VALUES ('$question', '$answer');";
 //INSERT INTO lernkarten (question, answer) VALUES ("question", "answer");
-echo $query;
+//echo $query;
 
 $db->executeInsert($query);
 $db->close();

@@ -60,7 +60,7 @@ include "dbcontroller.php";
             </form>
 
                 <button>new</button>
-                <button href="save.php">save</button>
+                <button href="./save.php">save</button>
                 <button>update</button>
                 <button>delete</button>
                 <button>upload picture</button>
