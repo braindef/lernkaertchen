@@ -42,12 +42,28 @@ include "dbcontroller.php";
           <dt>LEARN</dt>
           <dd>
 
-                <p>Subject > Theme > Subcategory</p>
-
                 <button><< previous</button>
                 <button>next >></button>
 
-            <form>
+            <form method="post">
+                <label for="subject">
+                  <input type="text" placeholder="subject" id="subject" name="subject">
+                </label>
+
+                  <br>
+
+                <label for="theme">
+                  <input type="text" placeholder="theme" id="theme" name="theme">
+                </label>
+
+                  <br>
+
+                <label for="category">
+                  <input type="text" placeholder="category" id="category" name="category">
+                </label>
+
+                  <br>
+
                 <label for="question">
                   <input type="text" placeholder="question" id="question" name="question">
                 </label>
@@ -57,20 +73,23 @@ include "dbcontroller.php";
                 <label for="answer">
                   <textarea type="text" placeholder="answer" id="answer" name="answer"></textarea>
                 </label>
-            </form>
 
                 <button>new</button>
-                <button href="./save.php">save</button>
+                <button onclick="this.form.action='save.php';" type="submit">save</button>
                 <button>update</button>
                 <button>delete</button>
                 <button>upload picture</button>
+
+
+
+
 
           </dd>
 
           <dt>SETTINGS</dt>
           <dd>
 
-            <form>
+
                 <label>
                     Subject
                     <select id="subject" name="subject">
