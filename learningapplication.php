@@ -45,7 +45,7 @@ include "dbcontroller.php";
                 <button><< previous</button>
                 <button>next >></button>
 
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <label for="subject">
                   <input type="text" placeholder="subject" id="subject" name="subject">
                 </label>
@@ -78,7 +78,7 @@ include "dbcontroller.php";
                 <button onclick="this.form.action='save.php';" type="submit">save</button>
                 <button>update</button>
                 <button>delete</button>
-                <input type="file" name="image">
+                <input type="file" name="image" id="image">
 
 
           </dd>

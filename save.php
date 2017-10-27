@@ -22,12 +22,45 @@ function test_input($data) {
 }
 
 
+// image upload
+if (isset($_FILES["image"]) AND ! $_FILES["image"]["error"] AND ($_FILES["image"]["size"] < 400000)) {
+    $bildinfo = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($bildinfo === false) {
+        die("kein Bild!");
+    } else {
+        $mime = $bildinfo["mime"];
+        $mimetypen = array (
+            "image/jpeg" => "jpg",
+            "image/gif" => "gif",
+            "image/png" => "png"
+        );
+    if (!isset($mimetypen[$mime])) {
+        die("nicht das richtige Format!");
+    } else {
+        $endung = $mimetypen[$mime];
+    }
+    $neuername = basename($_FILES["image"]["name"]);
+    $neuername = preg_replace("/\.(jpeg|gif|png)$/i", "", $neuername);
+    $neuername = preg_replace("/[^a-zA-Z0-9_-]/", "", $neuername);
+    $neuername .= ".$endung";
+    $image = "upload/$neuername";
+    while (file_exists($image)) {
+        $neuername = "kopie_$neuername";
+        $image = "upload/$neuername";
+    }
+    if (@move_uploaded_file($_FILES["image"]["tmp_name"], $image)) {
+        echo "Dateiupload hat geklappt!";
+    } else {
+        echo "Dateiupload hat nicht geklappt!";
+    }
+    }
+}
 
 
 
 
 
-$query="INSERT INTO lernkarten (subject, theme, category, question, answer) VALUES ('$subject', '$theme', '$category', '$question', '$answer');";
+$query="INSERT INTO lernkarten (subject, theme, category, question, answer, image) VALUES ('$subject', '$theme', '$category', '$question', '$answer', '$image');";
 //INSERT INTO lernkarten (question, answer) VALUES ("question", "answer");
 //echo $query;
 
