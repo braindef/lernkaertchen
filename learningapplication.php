@@ -42,12 +42,12 @@ include "dbcontroller.php";
           <dt>LEARN</dt>
           <dd>
 
-                <button><< previous</button>
-                <button>next >></button>
-
             <form method="post" enctype="multipart/form-data">
+                <button><< previous</button>
+                <button src="next.php">next >></button>
+
                 <label for="subject">
-                  <input type="text" placeholder="subject" id="subject" name="subject">
+                  <input type="text" placeholder="subject" id="subject" name="subject" value="<?php echo $subject; ?>">
                 </label>
 
                   <br>
@@ -89,7 +89,7 @@ include "dbcontroller.php";
 
                 <label>
                     Subject
-                    <select id="subject" name="subject">
+                    <select id="set-subject" name="set-subject">
                         <option value="math">Math</option>
                         <option value="english">English</option>
                         <option value="french">French</option>
@@ -100,7 +100,7 @@ include "dbcontroller.php";
 
                 <label>
                     Theme
-                    <select id="theme" name="theme">
+                    <select id="set-theme" name="set-theme">
                         <option>Pronouns</option>
                         <option>Erosion</option>
                         <option>Second World War</option>
@@ -110,8 +110,8 @@ include "dbcontroller.php";
                 </label>
 
                 <label>
-                    Subcategory
-                    <select id="chapter" name="chapter">
+                    Category
+                    <select id="set-category" name="set-category">
                         <option>John F. Kennedy</option>
                         <option>Alexander von Humbolt</option>
                         <option>Irgendwas</option>
