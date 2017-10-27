@@ -78,10 +78,7 @@ include "dbcontroller.php";
                 <button onclick="this.form.action='save.php';" type="submit">save</button>
                 <button>update</button>
                 <button>delete</button>
-                <button>upload picture</button>
-
-
-
+                <input type="file" name="image">
 
 
           </dd>
