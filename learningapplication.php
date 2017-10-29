@@ -90,7 +90,6 @@ $db = new DBController();
                 <label>
                     Subject
                     <select id="set-subject" name="set-subject">
-                        <!-- TODO: php for-schlaufe für select option -->
                         <?php
                             $query="SELECT DISTINCT subject FROM lernkarten;";
                             $resultset = $db->runQuery($query);
@@ -104,11 +103,13 @@ $db = new DBController();
                 <label>
                     Theme
                     <select id="set-theme" name="set-theme">
-                        <option>Pronouns</option>
-                        <option>Erosion</option>
-                        <option>Second World War</option>
-                        <option>Pythagoras</option>
-                        <option>Subjonctif</option>
+                        <?php
+                            $query="SELECT DISTINCT theme FROM lernkarten;";
+                            $resultset = $db->runQuery($query);
+                            foreach($resultset as $key => $value) {
+                                echo "<option value=".$resultset[$key]['subject'].">".$resultset[$key]['subject']."</option>";
+                            }
+                        ?>
                     </select>
                 </label>
 
@@ -155,6 +156,15 @@ $db = new DBController();
             </form>
 
                 <button>get</button>
+
+          </dd>
+
+          <dt>IMPORT / EXPORT</dt>
+          <dd>
+
+            <input type="file" name="import" id="import">
+
+            <input type="file" name="export" id="export">
 
           </dd>
 
