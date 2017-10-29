@@ -103,11 +103,12 @@ $db = new DBController();
                 <label>
                     Theme
                     <select id="set-theme" name="set-theme">
+                        <!-- SELECT WHERE -selected subject- DISTINCT theme FROM lernkarten; -->
                         <?php
                             $query="SELECT DISTINCT theme FROM lernkarten;";
                             $resultset = $db->runQuery($query);
                             foreach($resultset as $key => $value) {
-                                echo "<option value=".$resultset[$key]['subject'].">".$resultset[$key]['subject']."</option>";
+                                echo "<option value=".$resultset[$key]['theme'].">".$resultset[$key]['theme']."</option>";
                             }
                         ?>
                     </select>
