@@ -6,8 +6,8 @@ if (isset($_SESSION["login"])
     && $_SESSION["login"] == "ok") {
 
 // create database if not exists
-include "dbcontroller.php";
-// next step
+require_once("dbcontroller.php");
+$db = new DBController();
 
 ?>
 
@@ -90,11 +90,14 @@ include "dbcontroller.php";
                 <label>
                     Subject
                     <select id="set-subject" name="set-subject">
-                        <option value="math">Math</option>
-                        <option value="english">English</option>
-                        <option value="french">French</option>
-                        <option value="geographie">Geographie</option>
-                        <option value="history">History</option>
+                        <!-- TODO: php for-schlaufe für select option -->
+                        <?php
+                            $query="SELECT DISTINCT subject FROM lernkarten;";
+                            $resultset = $db->runQuery($query);
+                            foreach($resultset as $key => $value) {
+                                echo "<option value=".$resultset[$key]['subject'].">".$resultset[$key]['subject']."</option>";
+                            }
+                        ?>
                     </select>
                 </label>
 
