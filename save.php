@@ -23,7 +23,8 @@ function test_input($data) {
 
 
 // image upload
-if (isset($_FILES["image"]) AND ! $_FILES["image"]["error"] AND ($_FILES["image"]["size"] < 400000)) {
+// TODO: Neues Codesnippet nehmen
+if (isset($_FILES["image"]) AND ! $_FILES["image"]["error"] AND ($_FILES["image"]["size"] < 600000)) {
     $bildinfo = getimagesize($_FILES["image"]["tmp_name"]);
     if ($bildinfo === false) {
         die("kein Bild!");
@@ -40,7 +41,7 @@ if (isset($_FILES["image"]) AND ! $_FILES["image"]["error"] AND ($_FILES["image"
         $endung = $mimetypen[$mime];
     }
     $neuername = basename($_FILES["image"]["name"]);
-    $neuername = preg_replace("/\.(jpeg|gif|png)$/i", "", $neuername);
+    $neuername = preg_replace("/\.(jpe?g|gif|png)$/i", "", $neuername);
     $neuername = preg_replace("/[^a-zA-Z0-9_-]/", "", $neuername);
     $neuername .= ".$endung";
     $image = "upload/$neuername";
@@ -48,7 +49,7 @@ if (isset($_FILES["image"]) AND ! $_FILES["image"]["error"] AND ($_FILES["image"
         $neuername = "kopie_$neuername";
         $image = "upload/$neuername";
     }
-    if (@move_uploaded_file($_FILES["image"]["tmp_name"], $image)) {
+    if (is_uploaded_file($_FILES["image"]["tmp_name"]/*, $image*/)) {
         echo "Dateiupload hat geklappt!";
     } else {
         echo "Dateiupload hat nicht geklappt!";

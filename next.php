@@ -5,7 +5,7 @@ $db = new DBController();
 
 
 //$query = "SELECT * FROM comments;";
-$query = "SELECT * FROM lernkarten;";
+$query = "SELECT * FROM lernkarten WHERE id = 18;";
 
 $resultset = $db->runQuery($query);
 
@@ -16,12 +16,12 @@ if ($resultset == NULL)
 else
 {
 
-    $subject = $resultset[$key]['subject'];
-    $theme = $resultset[$key]['theme'];
-    $category = $resultset[$key]['category'];
-    $question = $resultset[$key]['question'];
-    $answer = $resultset[$key]['answer'];
-    $image = $resultset[$key]['image'];
+    $subject = $resultset['subject'];
+    $theme = $resultset['theme'];
+    $category = $resultset['category'];
+    $question = $resultset['question'];
+    $answer = $resultset['answer'];
+    $image = $resultset['image'];
 
 }
 ?>

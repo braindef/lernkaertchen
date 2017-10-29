@@ -47,7 +47,7 @@ include "dbcontroller.php";
                 <button src="next.php">next >></button>
 
                 <label for="subject">
-                  <input type="text" placeholder="subject" id="subject" name="subject" value="<?php echo $subject; ?>">
+                  <input type="text" placeholder="subject" id="subject" name="subject" value="">
                 </label>
 
                   <br>
