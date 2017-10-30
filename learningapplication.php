@@ -46,7 +46,10 @@ $db = new DBController();
                 <button><< previous</button>
                 <button src="next.php">next >></button>
 
+
+
                 <?php
+                // first test
                 $query="SELECT subject, theme, category, question, answer, image FROM lernkarten WHERE id = 10;";
                 $resultset = $db->runQuery($query);
 
