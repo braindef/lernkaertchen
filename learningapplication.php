@@ -46,9 +46,15 @@ $db = new DBController();
                 <button><< previous</button>
                 <button src="next.php">next >></button>
 
-                <label for="subject">
-                  <input type="text" placeholder="subject" id="subject" name="subject" value="">
-                </label>
+                <?php
+                $query="SELECT subject, theme, category, question, answer, image FROM lernkarten WHERE id = 10;";
+                $resultset = $db->runQuery($query);
+
+                echo "<label for='subject'>
+                  <input type='text' placeholder='subject' id='subject' name='subject' value='".$resultset[0]['subject']."'>
+                </label>"
+
+                ?>
 
                   <br>
 
@@ -73,6 +79,7 @@ $db = new DBController();
                 <label for="answer">
                   <textarea type="text" placeholder="answer" id="answer" name="answer"></textarea>
                 </label>
+
 
                 <button>new</button>
                 <button onclick="this.form.action='save.php';" type="submit">save</button>

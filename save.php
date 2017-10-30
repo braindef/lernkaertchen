@@ -24,7 +24,7 @@ function test_input($data) {
 
 // image upload
 // TODO: Neues Codesnippet nehmen
-if (isset($_FILES["image"]) AND ! $_FILES["image"]["error"] AND ($_FILES["image"]["size"] < 600000)) {
+/*if (isset($_FILES["image"]) AND ! $_FILES["image"]["error"] AND ($_FILES["image"]["size"] < 600000)) {
     $bildinfo = getimagesize($_FILES["image"]["tmp_name"]);
     if ($bildinfo === false) {
         die("kein Bild!");
@@ -49,14 +49,75 @@ if (isset($_FILES["image"]) AND ! $_FILES["image"]["error"] AND ($_FILES["image"
         $neuername = "kopie_$neuername";
         $image = "upload/$neuername";
     }
-    if (is_uploaded_file($_FILES["image"]["tmp_name"]/*, $image*/)) {
+    if (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) {
         echo "Dateiupload hat geklappt!";
     } else {
         echo "Dateiupload hat nicht geklappt!";
     }
     }
-}
+}   */
 
+
+// image upload new
+/*
+if (isset($_POST['image'])) {
+
+    $name = $_FILES['file']['name'];
+    $target_dir = "upload/";
+    $target_file = $target_dir . basename($_FILES['file']['name']);
+
+    // select file type
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // valid file extensions
+    $extensions_arr = array("jpg","jpeg","png","gif");
+
+    // check extensions
+    if (in_array($imageFileType, $extensions_arr)) {
+
+        // convert to base64
+        $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
+        $image = 'data:image/' . $imageFileType . ';base64,'.$image_base64;
+
+        // insert record
+        // see below..
+
+        //upload file
+        move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$name);
+
+    }
+
+}   */
+
+
+
+// copy pasted the code
+if(isset($_POST['upload'])){
+
+ $name = $_FILES['file']['name'];
+ $target_dir = "upload/";
+ $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+ // Select file type
+ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+ // Valid file extensions
+ $extensions_arr = array("jpg","jpeg","png","gif");
+
+ // Check extension
+ if( in_array($imageFileType,$extensions_arr) ){
+
+  // Convert to base64
+  $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
+  $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+  // Insert record
+
+
+  // Upload file
+  move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
+ }
+
+}
 
 
 
